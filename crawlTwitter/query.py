@@ -8,7 +8,7 @@ from functools import partial
 from multiprocessing.pool import Pool
 
 from fake_useragent import UserAgent
-from twitterscraper.tweet import Tweet
+from crawlTwitter.tweet import Tweet
 
 
 ua = UserAgent()

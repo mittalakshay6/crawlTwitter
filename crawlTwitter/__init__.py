@@ -1,14 +1,13 @@
-# TwitterScraper
-# Copyright 2016-2018 Ahmet Taspinar
-# See LICENSE for details.
+# Twitter Crawler
+
 """
-Twitter Scraper tool
+Twitter Crawling tool
 """
 
-__version__ = '0.4'
-__author__ = 'Ahmet Taspinar'
-__license__ = 'MIT'
+__version__ = '1.0'
+__author__ = 'Akshay Mittal'
+__license__ = 'Pyenoma'
 
 
-from twitterscraper.query import query_tweets
-from twitterscraper.tweet import Tweet
+from crawlTwitter.query import query_tweets
+from crawlTwitter.tweet import Tweet

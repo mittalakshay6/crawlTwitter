@@ -8,7 +8,7 @@ import argparse
 import collections
 import datetime as dt
 from os.path import isfile
-from twitterscraper.query import query_tweets
+from crawlTwitter.query import query_tweets
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, obj):
