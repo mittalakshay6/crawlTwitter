@@ -148,3 +148,14 @@ TO DO
    if something goes wrong and have half of the data of a request cached
    or so.
 
+
+
+
+
+
+
+
+github crawl not allowed
+
+https://www.quora.com/What-is-the-effective-way-to-crawl-all-projects-on-GitHub
+
