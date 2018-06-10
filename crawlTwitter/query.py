@@ -10,7 +10,6 @@ from multiprocessing.pool import Pool
 from fake_useragent import UserAgent
 from crawlTwitter.tweet import Tweet
 
-
 ua = UserAgent()
 HEADERS_LIST = [ua.chrome, ua.google, ua['google chrome'], ua.firefox, ua.ff]
 
@@ -18,6 +17,7 @@ INIT_URL = "https://twitter.com/search?f=tweets&vertical=default&q={q}&l={lang}"
 RELOAD_URL = "https://twitter.com/i/search/timeline?f=tweets&vertical=" \
              "default&include_available_features=1&include_entities=1&" \
              "reset_error_state=false&src=typd&max_position={pos}&q={q}&l={lang}"
+
 
 def linspace(start, stop, n):
     if n == 1:
@@ -49,7 +49,7 @@ def query_single_page(url, html_response=True, retry=10):
                 json_resp = json.loads(response.text)
                 html = json_resp['items_html'] or ''
             except ValueError as e:
-                logging.exception('Failed to parse JSON "{}" while requesting "{}"'.format(e, url))  
+                logging.exception('Failed to parse JSON "{}" while requesting "{}"'.format(e, url))
 
         tweets = list(Tweet.from_html(html))
 
@@ -72,10 +72,10 @@ def query_single_page(url, html_response=True, retry=10):
     except json.decoder.JSONDecodeError as e:
         logging.exception('Failed to parse JSON "{}" while requesting "{}".'.format(
             e, url))
-        
+
     if retry > 0:
         logging.info("Retrying... (Attempts left: {})".format(retry))
-        return query_single_page(url, html_response, retry-1)
+        return query_single_page(url, html_response, retry - 1)
 
     logging.error("Giving up.")
     return [], None
@@ -137,7 +137,9 @@ def eliminate_duplicates(iterable):
     non unique if the equality comparison to another element is true. (In those
     cases, the set conversion isn't sufficient as it uses identity comparison.)
     """
-    class NoElement: pass
+
+    class NoElement:
+        pass
 
     prev_elem = NoElement
     for elem in sorted(iterable):
@@ -150,16 +152,17 @@ def eliminate_duplicates(iterable):
             prev_elem = elem
             yield elem
 
-def query_tweets(query, limit=None, begindate=dt.date(2006,3,21), enddate=dt.date.today(), poolsize=20, lang=''):
+
+def query_tweets(query, limit=None, begindate=dt.date(2006, 3, 21), enddate=dt.date.today(), poolsize=20, lang=''):
     no_days = (enddate - begindate).days
     if poolsize > no_days:
         # Since we are assigning each pool a range of dates to query, 
-		# the number of pools should not exceed the number of dates.
+        # the number of pools should not exceed the number of dates.
         poolsize = no_days
-    dateranges = [begindate + dt.timedelta(days=elem) for elem in linspace(0, no_days, poolsize+1)]
+    dateranges = [begindate + dt.timedelta(days=elem) for elem in linspace(0, no_days, poolsize + 1)]
 
     if limit:
-        limit_per_pool = (limit // poolsize)+1
+        limit_per_pool = (limit // poolsize) + 1
     else:
         limit_per_pool = None
 
@@ -183,4 +186,3 @@ def query_tweets(query, limit=None, begindate=dt.date(2006,3,21), enddate=dt.dat
         pool.join()
 
     return all_tweets
-
