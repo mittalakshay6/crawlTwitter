@@ -6,3 +6,13 @@
     created for end users
 3. Github does not allow crawling as mentioned in robots.txt
 4. Pastebin says that it will black list the ip in case of many requests, to avoid this, need a pastebin pro account.
+
+
+
+twitter api: not all, authentication other limitations
+
+https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html
+
+github/gitlab crawl not allowed
+
+https://www.quora.com/What-is-the-effective-way-to-crawl-all-projects-on-GitHub
