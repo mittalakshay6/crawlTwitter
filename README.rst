@@ -151,11 +151,11 @@ TO DO
 
 
 
+twitter api: not all, authentication other limitations
 
+https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html
 
-
-
-github crawl not allowed
+github/gitlab crawl not allowed
 
 https://www.quora.com/What-is-the-effective-way-to-crawl-all-projects-on-GitHub
 

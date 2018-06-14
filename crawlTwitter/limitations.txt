@@ -1,0 +1,8 @@
+1. Twitter blocks the IP after certain number of requests.
+2. Twitter API has numerous restrictions:
+    authentication is required
+    not all tweets will be reported
+    need to have a website with FQDN
+    created for end users
+3. Github does not allow crawling as mentioned in robots.txt
+4. Pastebin says that it will black list the ip in case of many requests, to avoid this, need a pastebin pro account.
