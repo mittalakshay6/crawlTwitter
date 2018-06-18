@@ -4,8 +4,8 @@ import pymongo
 class Database:
     def __init__(self):
         self.client = pymongo.MongoClient()
-        self.db = self.client["tweets_db"]
-        self.collection = self.db["tweets"]
+        self.db = self.client["testing_db"]
+        self.collection = self.db["testing"]
 
     def get_db(self):
         return self.db

@@ -95,7 +95,7 @@ def query_tweets_once(query, limit=None, lang=''):
     :param limit: Scraping will be stopped when at least ``limit`` number of
                   items are fetched.
     :param num_tweets: Number of tweets fetched outside this function.
-    :return:      A list of twitterscraper.Tweet objects. You will get at least
+    :return:      A list of crawlTwitter.Tweet objects. You will get at least
                   ``limit`` number of items.
     """
     logging.info("Querying {}".format(query))

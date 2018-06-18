@@ -1,22 +1,27 @@
 from crawlTwitter.database import Database
 
 from crawlTwitter.query import query_tweets
-
+import time
 if __name__ == '__main__':
 
     # db = Database()
-
-    file = open("keywords.txt", "r")
-    keywords = file.read()
-    # print(keywords)
-
-    print("Querying tweets")
-    list_of_tweets = query_tweets("State bank of india")
-    print("printing")
-    for tweet in list_of_tweets:
-        print("done")
-        print(tweet.text)
-        print()
+    try:
+        file = open("keywords.txt", "r")
+        keywords = file.readlines()
+        # print(keywords)
+        for word in keywords:
+            print("Querying for: " + word)
+            # print("Querying tweets")
+            list_of_tweets = query_tweets(word)
+            print("printing")
+            for tweet in list_of_tweets:
+                print(tweet.text)
+                print()
+                print()
+            print("Sleeping for 2 min")
+            time.sleep(120)
+    except:
+        pass
     #     db.insert_tweet(tweet)
     # print the retrieved tweets to the screen:
     #

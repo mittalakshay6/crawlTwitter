@@ -1,3 +1,5 @@
+werkzeug
+flask
 pymongo
 coala-utils~=0.5.0
 bs4
