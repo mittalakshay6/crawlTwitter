@@ -1,5 +1,8 @@
+from datetime import time
+
 from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
+from crawlTwitter import query_tweets
 
 UPLOAD_FOLDER = '../'
 ALLOWED_EXT = {'.txt'}
@@ -19,6 +22,25 @@ def upload_file1():
         f = request.files['file']
         f.save(secure_filename(f.filename))
         return render_template('uploading.html')
+
+
+@app.route('start')
+def startScraping():
+    try:
+        file = open("keywords.txt", "r")
+        keywords = file.readlines()
+        # print(keywords)
+        for word in keywords:
+            print("Querying for: " + word)
+            # print("Querying tweets")
+            list_of_tweets = query_tweets(word)
+            print("printing")
+            for tweet in list_of_tweets:
+
+                print("Sleeping for 2 min")
+            time.sleep(120)
+    except:
+        pass
 
 
 if __name__ == '__main__':

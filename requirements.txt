@@ -6,3 +6,5 @@ bs4
 lxml
 fake_useragent
 requests2
+Flask_SocketIO==3.0.0
+Flask==1.0.2
